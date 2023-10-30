@@ -21,10 +21,10 @@ ssize_t read_textfile(const char *filename, size_t letters)
 
 	if (filename == NULL)
 		return (0);
-	file_d = open(filename, o_RDONLY);
+	file_d = open(filename, O_RDONLY);
 	if (file_d == -1)
 		return (0);
-	beffer = malloc(sizeof(char) * letters);
+	buffer = malloc(sizeof(char) * letters);
 	if (buffer == NULL)
 	{
 		close(file_d);
@@ -37,7 +37,7 @@ ssize_t read_textfile(const char *filename, size_t letters)
 		free(buffer);
 		return (0);
 	}
-	lenw = write(STDOUT_FILENO, beffer, lenr);
+	lenw = write(STDOUT_FILENO, buffer, lenr);
 	free(buffer);
 	if (lenr != lenw)
 		return (0);
